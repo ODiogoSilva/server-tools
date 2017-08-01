@@ -36,6 +36,7 @@ git clone https://github.com/ODiogoSilva/server-tools.git
 ## Tools
 
 - [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml): 2.1.0
+- [StringTie](https://ccb.jhu.edu/software/stringtie/): 1.3.3b
 
 ## Disclaimer
 
