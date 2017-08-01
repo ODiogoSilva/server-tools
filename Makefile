@@ -17,7 +17,7 @@ $(hisat2dir)/hisat2: $(hisat2dir)/Makefile
 	$(MAKE) -C hisat2
 
 hisat2b: $(hisat2bins)
-	cd $(bindir); ln ../$< ./
+	cd $(bindir); ln $(addprefix ../,$(hisat2bins)) ./
 
 
 stringtieb:
