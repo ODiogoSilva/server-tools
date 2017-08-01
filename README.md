@@ -35,7 +35,7 @@ git clone https://github.com/ODiogoSilva/server-tools.git
 
 ## Tools
 
-- [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml)
+- [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml): 2.1.0
 
 ## Disclaimer
 
