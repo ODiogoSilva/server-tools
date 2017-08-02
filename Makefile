@@ -11,6 +11,11 @@ stringtiedir := stringtie
 stringtiebins := $(stringtiedir)/stringtie
 stringtie: gitdir:=$(stringtiedir)
 
+# HTSlib variables
+htslibdir = htslib
+htslibbins := $(htslibdir)/tabix $(htslibdir)/htsfile
+htslib: gitdir:=$(htslibdir)
+
 # PHONY definition
 .PHONY: hisat2 link push stringtie gitcheck 
 
@@ -49,5 +54,14 @@ stringtie: gitcheck $(stringtiebins)
 $(stringtiebins): .git/modules/$(stringtiedir)/HEAD
 	cd $(stringtiedir); git reset --hard; git pull;
 	$(MAKE) -C stringtie clean; $(MAKE) -C stringtie release
+	$(MAKE) link bins=$@
+
+
+# HTSlib build
+htslib: gitcheck $(htslibbins)
+
+$(htslibbins): .git/modules/$(htslibdir)/HEAD
+	cd $(htslibdir); git reset --hard; git pull;
+	$(MAKE) -C htslib clean; $(MAKE) -C htslib
 	$(MAKE) link bins=$@
 
