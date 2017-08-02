@@ -41,3 +41,4 @@ git clone https://github.com/ODiogoSilva/server-tools.git
 ## Disclaimer
 
 Feel free to use this repository on your own servers/machines, which is under the GPL3 licence. However, note that these binaries were meant to be used in the servers of the repository contributors, so there is no warranty for other machines. 
+
