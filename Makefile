@@ -16,13 +16,18 @@ htslibdir = htslib
 htslibbins := $(htslibdir)/tabix $(htslibdir)/htsfile
 htslib: gitdir:=$(htslibdir)
 
-# samtools variable
+# samtools variables
 samtoolsdir = samtools
 samtoolsbins := $(samtoolsdir)/samtools
 samtools: gitdir:=$(samtoolsdir)
 
+# bcftools variables
+bcftoolsdir = bcftools
+bcftoolsbins := $(bcftoolsdir)/bcftools
+bcftools: gitdir:=$(bcftoolsdir)
+
 # PHONY definition
-.PHONY: hisat2 link push stringtie gitcheck htslib samtools
+.PHONY: hisat2 link push stringtie gitcheck htslib samtools bcftools
 
 
 # General rule recipies
@@ -78,4 +83,14 @@ $(samtoolsbins): .git/modules/$(samtoolsdir)/HEAD
 	$(MAKE) htslib
 	cd $(samtoolsdir); git reset --hard; git pull;
 	$(MAKE) -C samtools clean; $(MAKE) -C samtools
+	$(MAKE) link bins=$@
+
+
+# BCFtools build
+bcftools: gitcheck $(bcftoolsbins)
+
+$(bcftoolsbins): .git/modules/$(bcftoolsdir)/HEAD
+	$(MAKE) htslib
+	cd $(bcftoolsdir); git reset --hard; git pull;
+	$(MAKE) -C bcftools clean; $(MAKE) -C bcftools
 	$(MAKE) link bins=$@

@@ -39,6 +39,7 @@ git clone https://github.com/ODiogoSilva/server-tools.git
 - [StringTie](https://ccb.jhu.edu/software/stringtie/): 1.3.3b
 - [HTSlib](http://www.htslib.org/): 1.5-10
 - [Samtools](http://www.htslib.org/): 1.5-10
+- [BCFtools](http://www.htslib.org/): 1.5-10
 
 ## Disclaimer
 
