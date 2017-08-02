@@ -8,16 +8,15 @@ hisat2bins := $(hisat2dir)/hisat2 $(wildcard $(hisat2dir)/hisat2-*)
 stringtiedir = stringtie
 stringtiebins = $(stringtiedir)/stringtie
 
-$(hisat2dir)/Makefile:
+
+$(hisat2dir)/hisat2:
 	echo "Automatic build for HISAT2"
 	cd $(hisat2dir); git reset --hard; git pull
-
-$(hisat2dir)/hisat2: $(hisat2dir)/Makefile
 	$(MAKE) -C hisat2 clean
 	$(MAKE) -C hisat2
 
 hisat2b: $(hisat2bins)
-	cd $(bindir); ln $(addprefix ../,$(hisat2bins)) ./
+	cd $(bindir); ln -f $(addprefix ../,$(hisat2bins)) ./
 
 
 stringtieb:
