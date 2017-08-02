@@ -8,10 +8,12 @@ hisat2bins := $(hisat2dir)/hisat2 $(wildcard $(hisat2dir)/hisat2-*)
 stringtiedir := stringtie
 stringtiebins := $(stringtiedir)/stringtie
 
+stringtie: gitdir:=$(stringtiedir)
+
 
 # PHONY definition
 
-.PHONY: hisat2b link push stringtie
+.PHONY: hisat2b link push stringtie 
 
 
 # General rule recipies
@@ -24,6 +26,9 @@ push:
 	git commit -m "Updated $(tool) tool"
 	git push
 
+gitcheck:
+	# Git submodule updating 
+	git submodule update $(gitdir)
 
 # Building recipies
 
@@ -37,14 +42,11 @@ hisat2build: $(hisat2dir)/.DEWIT
 	cd $(bindir); ln -f $(addprefix ../,$(hisat2bins)) ./
 
 # Stringtie build
-stringtie: $(bindir)/stringtie
+stringtie: gitcheck $(stringtiebins)
 
-$(bindir)/stringtie: .git/modules/$(stringtiedir)/HEAD
-	# Automatic build for StringTie
-	git submodule update $(stringtiedir)
-	$(MAKE) stringtiebuild
 
-stringtiebuild: .git/modules/$(stringtiedir)/HEAD
+$(stringtiebins): .git/modules/$(stringtiedir)/HEAD
 	cd $(stringtiedir); git reset --hard; git pull;
 	$(MAKE) -C stringtie clean; $(MAKE) -C stringtie release
 	$(MAKE) link bins=$(stringtiebins)
+
