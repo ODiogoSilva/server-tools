@@ -16,8 +16,13 @@ htslibdir = htslib
 htslibbins := $(htslibdir)/tabix $(htslibdir)/htsfile
 htslib: gitdir:=$(htslibdir)
 
+# samtools variable
+samtoolsdir = samtools
+samtoolsbins := $(samtoolsdir)/samtools
+samtools: gitdir:=$(samtoolsdir)
+
 # PHONY definition
-.PHONY: hisat2 link push stringtie gitcheck 
+.PHONY: hisat2 link push stringtie gitcheck htslib samtools
 
 
 # General rule recipies
@@ -65,3 +70,12 @@ $(htslibbins): .git/modules/$(htslibdir)/HEAD
 	$(MAKE) -C htslib clean; $(MAKE) -C htslib
 	$(MAKE) link bins=$@
 
+
+# samtools build
+samtools: gitcheck $(samtoolsbins)
+
+$(samtoolsbins): .git/modules/$(samtoolsdir)/HEAD
+	$(MAKE) htslib
+	cd $(samtoolsdir); git reset --hard; git pull;
+	$(MAKE) -C samtools clean; $(MAKE) -C samtools
+	$(MAKE) link bins=$@
