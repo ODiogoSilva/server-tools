@@ -37,7 +37,8 @@ git clone https://github.com/ODiogoSilva/server-tools.git
 
 - [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml): 2.1.0
 - [StringTie](https://ccb.jhu.edu/software/stringtie/): 1.3.3b
-- [Samtools](http://www.htslib.org/): 1.5
+- [HTSlib](http://www.htslib.org/): 1.5-10
+- [Samtools](http://www.htslib.org/): 1.5-10
 
 ## Disclaimer
 
