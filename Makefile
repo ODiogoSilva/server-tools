@@ -1,5 +1,6 @@
 bindir := bin
 
+
 # HISAT2 variables
 hisat2dir := hisat2
 hisat2bins := $(hisat2dir)/hisat2 $(wildcard $(hisat2dir)/hisat2-*)
