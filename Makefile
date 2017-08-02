@@ -11,12 +11,14 @@ stringtiedir := stringtie
 stringtiebins := $(stringtiedir)/stringtie
 stringtie: gitdir:=$(stringtiedir)
 
-
 # PHONY definition
-.PHONY: hisat2b link push stringtie gitcheck 
+.PHONY: hisat2 link push stringtie gitcheck 
 
 
 # General rule recipies
+
+all: hisat2 stringtie 
+
 link:
 	cd $(bindir); ln -f $(addprefix ../,$(bins))
 
