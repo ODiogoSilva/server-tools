@@ -16,3 +16,9 @@
 [submodule "vcftools"]
 	path = vcftools
 	url = https://github.com/vcftools/vcftools.git
+[submodule "bowtie2"]
+	path = bowtie2
+	url = https://github.com/BenLangmead/bowtie2.git
+[submodule "cufflinks"]
+	path = cufflinks
+	url = https://github.com/cole-trapnell-lab/cufflinks.git

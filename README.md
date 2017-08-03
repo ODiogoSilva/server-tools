@@ -40,6 +40,9 @@ git clone https://github.com/ODiogoSilva/server-tools.git
 - [HTSlib](http://www.htslib.org/): 1.5-10
 - [Samtools](http://www.htslib.org/): 1.5-10
 - [BCFtools](http://www.htslib.org/): 1.5-10
+- [VCFtolls](http://vcftools.sourceforge.net/): 0.1.15
+- [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml): 2.3.2
+- [Cufflinks](http://cole-trapnell-lab.github.io/cufflinks/install/): 2.2.1
 
 ## Disclaimer
 

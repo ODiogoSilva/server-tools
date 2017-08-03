@@ -42,7 +42,14 @@ vcftoolsbins = $(bindir)/$(vcftoolsbinar)
 vcftools: gitdir:=$(vcftoolsdir)
 vcftools: srcbins = $(vcftoolsdir)/src/cpp/$(vcftoolsbinar)
 
-.PHONY: hisat2 link push stringtie gitcheck htslib samtools bcftools vcftools bins
+# bowtie2 variables
+bowtie2dir = bowtie2
+bowtie2binar = bowtie2 bowtie2-align-l bowtie2-align-s bowtie2-build bowtie2-build-l bowtie2-build-s bowtie2-inspect bowtie2-inspect-l bowtie2-inspect-s
+bowtie2bins = $(addprefix $(bindir)/,$(bowtie2binar))
+bowtie2: gitdir = $(bowtie2dir)
+bowtie2: srcbins = $(addprefix $(bowtie2dir)/,$(bowtie2binar))
+
+.PHONY: hisat2 link push stringtie gitcheck htslib samtools bcftools vcftools bowtie2
 
 
 # General rule recipies
@@ -119,4 +126,13 @@ $(vcftoolsbins): .git/modules/$(vcftoolsdir)/HEAD
 	@cd $(vcftoolsdir); git reset --hard; git pull;
 	cd $(vcftoolsdir); ./autogen.sh && ./configure
 	$(MAKE) -C vcftools clean; $(MAKE) -C vcftools
+	$(MAKE) link bins="$(srcbins)"
+
+
+# Bowtie2 build
+bowtie2: gitcheck $(bowtie2bins)
+
+$(bowtie2bins): .git/modules/$(bowtie2dir)/HEAD
+	cd $(bowtie2dir); git reset --hard; git pull;
+	$(MAKE) -C bowtie2 clean; $(MAKE) -C bowtie2
 	$(MAKE) link bins="$(srcbins)"
