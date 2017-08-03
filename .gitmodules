@@ -13,3 +13,6 @@
 [submodule "bcftools"]
 	path = bcftools
 	url = https://github.com/samtools/bcftools.git
+[submodule "vcftools"]
+	path = vcftools
+	url = https://github.com/vcftools/vcftools.git
